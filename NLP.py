@@ -23,25 +23,7 @@ from textblob import TextBlob
    # result = ' '.join(summary_list)
    # return result
 
-def text_analyzer(text):
-    nlp = spacy.load("c:/users/shriprada/anaconda3/lib/site-packages/en_core_web_md/en_core_web_md-3.4.0")
-    doc = nlp(text)
-    
-    tokens = [token.text for token in doc]
-    allData = [('"Tokens":{},\n"Lemma":{}'.format(token.text,token.lemma_)) for token in doc]
-    return allData
 
-
-
-def entity_analyzer(text):
-    nlp = spacy.load("c:/users/shriprada/anaconda3/lib/site-packages/en_core_web_md/en_core_web_md-3.4.0")
-    doc = nlp(text)
-    tokens = [token.text for token in doc]
-    entities = [(entity.text, entity.label_) for entity in doc.ents]
-    allDatas = ['"Tokens":{},\n"Entities":{}'.format(tokens,entities)]
-    return allDatas
-    
- 
 
     
 
@@ -51,20 +33,6 @@ def main():
     st.subheader("Sentiment Analysis on the review")
     review = st.text_area("Enter the Review", "Type Here")
     
-    if st.checkbox("Show Tokens and Lemma"):
-        #st.subheader("Tokenize Your Text")
-        #review = st.text_area("Enter the Review", "Type Here")
-        if st.button("Analyze"):
-            nlp_result = text_analyzer(review)
-            st.json(nlp_result)
-    
-            
-    if st.checkbox("Show Named Entities"):
-         #st.subheader("Extract Entities From You Text")
-         #review = st.text_area("Enter the Review", "Type Here")
-         if st.button("Extract"):
-             nlp_results = entity_analyzer(review)
-             st.json(nlp_results)
              
              
     if st.checkbox("Show Sentiment Analysis"):
