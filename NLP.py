@@ -24,7 +24,7 @@ from textblob import TextBlob
    # return result
 
 def text_analyzer(text):
-    nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("en")
     doc = nlp(text)
     
     tokens = [token.text for token in doc]
@@ -34,7 +34,7 @@ def text_analyzer(text):
 
 
 def entity_analyzer(text):
-    nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("en")
     doc = nlp(text)
     tokens = [token.text for token in doc]
     entities = [(entity.text, entity.label_) for entity in doc.ents]
